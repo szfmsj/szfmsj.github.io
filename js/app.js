@@ -14,7 +14,7 @@ app.renderErr404 = function () {
                 <p>回到<a href="/?/home/">网站首页</a>？</p>
             </div>
         </div>`;
-    }, 400);
+    }, 5);
 };
 
 app.setTitle = function (title) {
@@ -103,12 +103,15 @@ app.renderInnerPage = function (scene, isEinListPage) {
         var newRegExp = new RegExp(`^\\?\\/${scene}\\/(\\d+)$`);
         if (location.search.match(newRegExp)) {
             var matcher = parseInt(location.search.match(newRegExp)[1]);
-            console.log('matcher');
-            app.canvasRenderers['article_detail']({
-                index: matcher,
-                scene: scene,
-                hierarchyLocation: [['link', scene],['label',app.db[scene][matcher].t]]
-            });
+            if (matcher >= app.db[scene].length) {
+                app.renderErr404();
+            } else {
+                app.canvasRenderers['article_detail']({
+                    index: matcher,
+                    scene: scene,
+                    hierarchyLocation: [['link', scene],['label',app.db[scene][matcher].t]]
+                });
+            }
         } else {
             document.querySelector('#js-scene-listOfArticles').innerHTML = JSON.parse(e.target.responseText).reverse().map(function (entry, index) {
                 if (entry.t === '{{null}}') {
