@@ -1,13 +1,15 @@
 window.app = {};
 
 var renderErr404 = function () {
-    document.body.innerHTML = `<div>
-        <div>
-            <h1>404 Not Found</h1>
-            <p>Cannot find the page.</p>
-            <p>Go to <a href="/?/home/">Homepage</a>?</p>
-        </div>
-    </div>`;
+    setTimeout(function () {
+        document.querySelector('#js-realSceneContent').innerHTML = `<div>
+            <div>
+                <h1>404 找不到页面</h1>
+                <p>无法找到页面。</p>
+                <p>回到<a href="/?/home/">网站首页</a>？</p>
+            </div>
+        </div>`;
+    }, 400);
 };
 
 app.get = function (url, callback) {
@@ -27,9 +29,7 @@ app.parseScene = function () {
     if (location.search === '') {
         location.replace('/?/home/');
     } else {
-        var totalScenes = [
-            [ 'home', 'dangjian', 'xinxi', 'hudong' ];
-        ];
+        var totalScenes = [ 'home', 'dangjian', 'xinxi', 'huodong' ];
         window.currentScene = 'null';
         totalScenes.map(function (x) {
             if (location.search.indexOf(`?/${x}/`) === 0) {
@@ -38,6 +38,10 @@ app.parseScene = function () {
         });
         if (window.currentScene === 'null') {
             renderErr404();
+        } else {
+            app.get(`/scenes/${currentScene}.html`, function (e) {
+                document.querySelector('#js-realSceneContent').innerHTML = e.target.responseText;
+            });
         }
     };
 };
