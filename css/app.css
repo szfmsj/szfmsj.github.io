@@ -61,6 +61,11 @@ body {
     width: calc(100% / 4);
     padding: 15px 15px;
 }
+@media screen and (max-width: 450px) {
+    .nav-options > a {
+        width: calc(100% / 2);
+    }
+}
 .nav-options > a:hover {
     background: rgba(0, 10, 90, 0.8);
 }
