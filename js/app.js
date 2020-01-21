@@ -2,6 +2,12 @@ window.app = {};
 
 window.allXhr = [];
 
+app.finallyShow = function () {
+    document.querySelectorAll('.finallyShow').forEach(function (node) {
+        node.style.opacity = '1';
+    });
+};
+
 app.db = {};
 
 app.renderErr404 = function () {
@@ -14,6 +20,7 @@ app.renderErr404 = function () {
                 <p>回到<a href="/?/home/">网站首页</a>？</p>
             </div>
         </div>`;
+        app.finallyShow();
     }, 5);
 };
 
@@ -81,15 +88,19 @@ app.canvasRenderers = {
         </div>`;
         app.get(`/db/${argv.scene}/db/${argv.index}.html`, function (e) {
             document.querySelector('#js-articleFileContent').innerHTML = e.target.responseText;
+            app.finallyShow();
         });
     },
-    'home': function () {},
+    'home': function () {
+        app.finallyShow();
+    },
     'dangjian': function () {
         app.setHierarchyLocation([['label', '党建工作']]);
         app.renderInnerPage('dangjian');
     },
     'xinxi': function () {
         app.setHierarchyLocation([['label', '信息公开']]);
+        app.finallyShow();
     },
     'huodong': function () {
         app.setHierarchyLocation([['label', '宗教活动']]);
@@ -120,6 +131,7 @@ app.renderInnerPage = function (scene, isEinListPage) {
                     return app.canvasRenderers['_articleListItem'](scene, entry);
                 };
             }).join('');
+            app.finallyShow();
         };
     });
 };
