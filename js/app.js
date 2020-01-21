@@ -1,7 +1,8 @@
 window.app = {};
 
-var renderErr404 = function () {
+app.renderErr404 = function () {
     setTimeout(function () {
+        app.setTitle('404 找不到页面');
         document.querySelector('#js-realSceneContent').innerHTML = `<div>
             <div>
                 <h1>404 找不到页面</h1>
@@ -10,6 +11,10 @@ var renderErr404 = function () {
             </div>
         </div>`;
     }, 400);
+};
+
+app.setTitle = function (title) {
+    document.title = `${title} — 三自飞面神教爱国会`
 };
 
 app.get = function (url, callback) {
@@ -37,7 +42,7 @@ app.parseScene = function () {
             };
         });
         if (window.currentScene === 'null') {
-            renderErr404();
+            app.renderErr404();
         } else {
             app.get(`/scenes/${currentScene}.html`, function (e) {
                 document.querySelector('#js-realSceneContent').innerHTML = e.target.responseText;
