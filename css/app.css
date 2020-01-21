@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Source Sans Pro', sans-serif, 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN';
+    font-size: 14px;
+    line-height: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .block-contraint {
+        padding: 0px 20px;
+        margin: 0 auto;
+    }
+}
+@media screen and (min-width: 769px) {
+    .block-contraint {
+        max-width: 880px;
+        padding: 0px 20px;
+        margin: 0 auto;
+    }
+}
+.padless {
+    padding: 1px 0;
+}
+
+/* ------------------------------------
+    Component: Grand-Header
+------------------------------------ */
+
+.grand-header {
+    color: #FFF;
+    background: #2086FF url(/pic/143789.png) scroll top center;
+    background-size: cover;
+    padding: 15px 0 0;
+}
+.grand-header h1 {
+    /* font-family: 'Noto Serif', 'Source Serif Pro', 'Iowan Old Style', 'Charter', 'Georgia', 'Times New Roman', serif, 'Noto Serif SC', 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN', 'Hiragino Sans GB', 'YuGothic', 'Heiti SC'; */
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.nav-options > a {
+    font-size: 16px;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    background: rgba(0, 0, 90, 0.3);
+    display: block;
+    float: left;
+    width: calc(100% / 4);
+    padding: 15px 15px;
+}
+.nav-options > a:hover {
+    background: rgba(0, 10, 90, 0.8);
+}
+
+/* ------------------------------------
+    Component: Grand-Body
+------------------------------------ */
