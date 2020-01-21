@@ -67,3 +67,38 @@ body {
 /* ------------------------------------
     Component: Grand-Body
 ------------------------------------ */
+
+/* ------------------------------------
+    Component: Articles List
+------------------------------------ */
+
+.articles-list-item {
+    border-bottom: 1px solid #DDD;
+}
+.articles-list-item:first-child {
+    border-top: 1px solid #DDD;
+}
+.articles-list-item:not(:first-child) {}
+a.articles-list-item-inner {
+    color: #26D;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0;
+}
+a.articles-list-item-inner:hover {
+    /* color: #143B81; */
+    background: rgba(0, 0, 0, 0.03);
+}
+.articles-list-item-inner-title {
+    font-size: 22px;
+    color: #000;
+    color: #26D;
+    color: inherit;
+    padding: 0 0 5px;
+}
+.articles-list-item-inner-metadata {}
+.articles-list-item-inner-metadata-date {
+    font-family: 'Source Code Pro', 'Menlo';
+    font-size: 14px;
+    color: #666;
+}
