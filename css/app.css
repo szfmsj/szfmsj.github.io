@@ -51,6 +51,7 @@ body {
 
 .nav-options > a {
     font-size: 16px;
+    font-weight: 600;
     color: #FFF;
     text-align: center;
     text-decoration: none;
@@ -62,6 +63,16 @@ body {
 }
 .nav-options > a:hover {
     background: rgba(0, 10, 90, 0.8);
+}
+
+/* ------------------------------------
+    Component: hierarchy Location
+------------------------------------ */
+
+#js-pageNavHierarchyLocation a {
+    color: #26D;
+    text-decoration: none;
+    border-bottom: 1px solid #26D;
 }
 
 /* ------------------------------------
