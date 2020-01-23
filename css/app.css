@@ -7,6 +7,7 @@ html {
     font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Source Sans Pro', sans-serif, 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN';
     font-size: 14px;
     line-height: 1.5em;
+    background: #F5F5F5;
     padding: 0;
     margin: 0;
 }
@@ -16,13 +17,13 @@ body {
     margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .block-contraint {
         padding: 0px 20px;
         margin: 0 auto;
     }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
     .block-contraint {
         max-width: 880px;
         padding: 0px 20px;
@@ -53,10 +54,9 @@ body {
 }
 .grand-header h1 {
     /* font-family: 'Noto Serif', 'Source Serif Pro', 'Iowan Old Style', 'Charter', 'Georgia', 'Times New Roman', serif, 'Noto Serif SC', 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN', 'Hiragino Sans GB', 'YuGothic', 'Heiti SC'; */
-    font-size: 32px;
+    /* font-size: 32px; */
     font-weight: 600;
 }
-
 .nav-options > a {
     font-size: 16px;
     font-weight: 600;
@@ -92,6 +92,11 @@ body {
     Component: Grand-Body
 ------------------------------------ */
 
+.grand-body {
+    background: #FFF;
+    padding: 0 0 60px;
+}
+
 /* ------------------------------------
     Component: Articles List
 ------------------------------------ */
@@ -120,9 +125,38 @@ a.articles-list-item-inner:hover {
     color: inherit;
     padding: 0 0 5px;
 }
-.articles-list-item-inner-metadata {}
-.articles-list-item-inner-metadata-date {
-    font-family: 'Source Code Pro', 'Menlo';
+.articles-list-item-inner-metadata {
     font-size: 14px;
     color: #666;
+    line-height: 24px;
+}
+.articles-list-item-inner-metadata-date {}
+.articles-list-item-inner-metadata-editor {}
+@media screen and (min-width: 768px) {
+    .articles-list-item-inner-metadata-date,
+    .articles-list-item-inner-metadata-editor {
+        display: inline-block;
+    }
+    .articles-list-item-inner-metadata-editor {
+        margin-left: 20px;
+    }
+}
+.articles-list-item-inner-metadata-monospace {
+    font-family: 'Source Code Pro', 'Menlo', monospace, 'SF Pro Text', 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN', sans-serif;
+}
+[data-view-model="articleDetail"] .articles-list-item-inner-metadata .articles-list-item-inner-metadata-monospace {
+    margin-left: 5px;
+}
+
+/* ------------------------------------
+    Component: Grand-Footer
+------------------------------------ */
+
+.grand-footer {
+    background: #F5F5F5;
+    padding: 80px 0 100px;
+}
+.grand-footer p {
+    font-size: 14px;
+    color: #888;
 }

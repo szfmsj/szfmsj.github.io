@@ -2,7 +2,7 @@ window.app = {};
 
 window.allXhr = [];
 
-app.finallyShow = function () {
+app.renderCompletionEventHandler = function () {
     document.querySelectorAll('.finallyShow').forEach(function (node) {
         node.style.opacity = '1';
     });
@@ -20,7 +20,7 @@ app.renderErr404 = function () {
                 <p>回到<a href="/?/home/">网站首页</a>？</p>
             </div>
         </div>`;
-        app.finallyShow();
+        app.renderCompletionEventHandler();
     }, 5);
 };
 
@@ -56,14 +56,16 @@ app.get = function (url, callback) {
 
 app.canvasRenderers = {
     '_articleListItem': function (scene, entry) {
-        return `<div class="articles-list-item">
+        return `<div class="articles-list-item" data-view-model="articleListItem">
             <a class="articles-list-item-inner" href="/?/${scene}/${entry.i}">
                 <div class="articles-list-item-inner-title">
                     ${entry.t}
                 </div>
                 <div class="articles-list-item-inner-metadata">
                     <span class="articles-list-item-inner-metadata-date">
-                        ${(new Date(entry.d)).toISOString().replace('T', ' ').replace(/\d{2}:\d{2}:\d{2}\.\d{3}Z/, '')}
+                        <span class="articles-list-item-inner-metadata-monospace">
+                            ${(new Date(entry.d)).toISOString().replace('T', ' ').replace(/\d{2}:\d{2}:\d{2}\.\d{3}Z/, '')}
+                        </span>
                     </span>
                 </div>
             </a>
@@ -72,14 +74,23 @@ app.canvasRenderers = {
     'article_detail': function (argv) {
         console.log(argv);
         app.setHierarchyLocation(argv.hierarchyLocation);
-        document.querySelector('#js-realSceneContent').innerHTML = `<div>
+        document.querySelector('#js-realSceneContent').innerHTML = `<div data-view-model="articleDetail">
             <div>
                 <h2>${app.db[argv.scene][argv.index].t}</h2>
             </div>
             <div style="padding: 0 0 30px;">
                 <div class="articles-list-item-inner-metadata">
                     <div class="articles-list-item-inner-metadata-date">
-                        ${(new Date(app.db[argv.scene][argv.index].d)).toISOString().replace('T', ' ').replace(/\d{2}:\d{2}:\d{2}\.\d{3}Z/, '')}
+                        日期:
+                        <span class="articles-list-item-inner-metadata-monospace">
+                            ${(new Date(app.db[argv.scene][argv.index].d)).toISOString().replace('T', ' ').replace(/\d{2}:\d{2}:\d{2}\.\d{3}Z/, '')}
+                        </span>
+                    </div>
+                    <div class="articles-list-item-inner-metadata-editor">
+                        编辑:
+                        <span class="articles-list-item-inner-metadata-monospace">
+                            ${app.db[argv.scene][argv.index].a.join('、')}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -88,11 +99,11 @@ app.canvasRenderers = {
         </div>`;
         app.get(`/db/${argv.scene}/db/${argv.index}.html`, function (e) {
             document.querySelector('#js-articleFileContent').innerHTML = e.target.responseText;
-            app.finallyShow();
+            app.renderCompletionEventHandler();
         });
     },
     'home': function () {
-        app.finallyShow();
+        app.renderCompletionEventHandler();
     },
     'dangjian': function () {
         app.setHierarchyLocation([['label', '党建工作']]);
@@ -100,7 +111,7 @@ app.canvasRenderers = {
     },
     'xinxi': function () {
         app.setHierarchyLocation([['label', '信息公开']]);
-        app.finallyShow();
+        app.renderCompletionEventHandler();
     },
     'huodong': function () {
         app.setHierarchyLocation([['label', '宗教活动']]);
@@ -131,7 +142,7 @@ app.renderInnerPage = function (scene, isEinListPage) {
                     return app.canvasRenderers['_articleListItem'](scene, entry);
                 };
             }).join('');
-            app.finallyShow();
+            app.renderCompletionEventHandler();
         };
     });
 };
