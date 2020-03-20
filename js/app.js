@@ -56,8 +56,9 @@ app.get = function (url, callback) {
 
 app.canvasRenderers = {
     '_articleListItem': function (scene, entry) {
-        return `<div class="articles-list-item" data-view-model="articleListItem">
-            <a class="articles-list-item-inner" href="/?/${scene}/${entry.i}">
+        return `<a class="articles-list-item block-constraint" data-view-model="articleListItem" href="/?/${scene}/${entry.i}">
+            <div class="articles-list-item-bordertop"></div>
+            <div class="articles-list-item-inner">
                 <div class="articles-list-item-inner-title">
                     ${entry.t}
                 </div>
@@ -68,13 +69,14 @@ app.canvasRenderers = {
                         </span>
                     </span>
                 </div>
-            </a>
-        </div>`;
+            </div>
+            <div class="articles-list-item-borderbottom"></div>
+        </a>`;
     },
     'article_detail': function (argv) {
         console.log(argv);
         app.setHierarchyLocation(argv.hierarchyLocation);
-        document.querySelector('#js-realSceneContent').innerHTML = `<div data-view-model="articleDetail">
+        document.querySelector('#js-realSceneContent').innerHTML = `<div data-view-model="articleDetail" class="block-constraint">
             <div>
                 <h2>${app.db[argv.scene][argv.index].t}</h2>
             </div>
