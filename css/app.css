@@ -5,7 +5,7 @@
 
 html {
     font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Source Sans Pro', sans-serif, 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN';
-    font-size: 14px;
+    /* font-size: 14px; */
     line-height: 1.5em;
     background: #F5F5F5;
     padding: 0;
@@ -16,7 +16,6 @@ body {
     padding: 0;
     margin: 0;
 }
-
 @media screen and (max-width: 767px) {
     .block-constraint {
         padding: 0px 20px;
@@ -48,7 +47,7 @@ body {
 
 .grand-header {
     color: #FFF;
-    background: #2086FF url(/pic/143789.png) scroll top center;
+    background: #F23 url(/pic/143789.png) scroll top center;
     background-size: cover;
     padding: 15px 0 0;
 }
@@ -63,7 +62,7 @@ body {
     color: #FFF;
     text-align: center;
     text-decoration: none;
-    background: rgba(0, 0, 90, 0.3);
+    background: rgba(90, 0, 0, 0.3);
     display: block;
     float: left;
     width: calc(100% / 4);
@@ -75,7 +74,7 @@ body {
     }
 }
 .nav-options > a:hover {
-    background: rgba(0, 10, 90, 0.8);
+    background: rgba(90, 0, 0, 0.8);
 }
 
 /* ------------------------------------
@@ -112,25 +111,27 @@ body {
     height: 1px;
 }
 .articles-list-item-borderbottom {
-    height: 1px;
+    /* height: 1px; */
 }
 .articles-list-item:hover {
     background: rgba(0, 0, 0, 0.025);
     box-shadow: inset #DDD 0 0 0 1px;
-    /* border: 1px solid #DDD; */
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0); */
-    /* box-shadow: #DDD 0 1px 0; */
 }
-/* .articles-list-item:hover .articles-list-item-bordertop, */
-/* .articles-list-item:hover .articles-list-item-borderbottom, */
+.articles-list-item:last-child:hover {
+    margin-bottom: -1px;
+}
 .articles-list-item:hover + .articles-list-item > .articles-list-item-bordertop {
     height: 0px;
 }
 .articles-list-item-inner {
     color: #26D;
     text-decoration: none;
+    box-shadow: inset rgba(0,0,0,0) 0 1px 0;
     display: block;
     padding: 5px 0px 10px;
+}
+.articles-list-item:hover + .articles-list-item > .articles-list-item-inner {
+    box-shadow: inset rgba(0,0,0,0) 0 1px 0;
 }
 .articles-list-item-inner-title {
     font-size: 22px;

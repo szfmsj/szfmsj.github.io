@@ -72,29 +72,20 @@ p code {
 h1, h2, h3, h4, h5, h6, p, blockquote, aside, ul, ol, ul li, ol li {
     line-height: 1.5em;
 }
+h1, .h1 { font-size: 2rem; font-weight: 500; margin: 0.5em 0; }
+h2, .h2 { font-size: 1.6rem; font-weight: 500; margin: 0.5em 0; }
+h3, .h3 { font-size: 1.4rem; font-weight: 500; margin: 0.5em 0; }
+h4, .h4 { font-size: 1.2rem; font-weight: 400; margin: 0.5em 0; }
+h5, .h5 { font-size: 1rem; font-weight: 600; margin: 0.5em 0; }
+p, .p { font-size: 1rem; font-weight: 400; margin: 0.5em 0; }
+li, .li { font-size: 1rem; font-weight: 400; margin: 0.5em 0; }
+aside, .aside { font-size: 16px; font-weight: 300; margin: 0.5em 0; }
+
 @media screen and (min-width: 768px) {
-    h1, .h1 { font-size: 36px; font-weight: 500; margin: 20px auto 20px; }
-    h2, .h2 { font-size: 30px; font-weight: 500; margin: 20px auto 20px; }
-    h3, .h3 { font-size: 24px; font-weight: 300; margin: 20px auto 20px; }
-    h3 > .h3 { margin: 0 auto 10px; }
-    h4, .h4 { font-size: 24px; font-weight: 600; margin: 0 auto 10px; }
-    h5, .h5 { font-size: 20px; font-weight: 600; margin: 0 auto 10px; }
-    p, .p { font-size: 20px; font-weight: 400; margin: 0 auto 10px; }
-    li, .li { font-size: 20px; font-weight: 400; margin: 0 auto 10px; }
-    aside, .aside { font-size: 16px; font-weight: 300; margin: 0; }
-    .aside ~ .aside { margin: 5px 0 0; }
+    html { font-size: 18px; }
 }
 @media screen and (max-width: 767px) {
-    h1, .h1 { font-size: 30px; font-weight: 500; margin: 20px auto 20px; }
-    h2, .h2 { font-size: 24px; font-weight: 500; margin: 20px auto 20px; }
-    h3, .h3 { font-size: 20px; font-weight: 300; margin: 20px auto 20px; }
-    h3 > .h3 { margin: 0 auto 10px; }
-    h4, .h4 { font-size: 20px; font-weight: 600; margin: 0 auto 10px; }
-    h5, .h5 { font-size: 18px; font-weight: 600; margin: 0 auto 10px; }
-    p, .p { font-size: 18px; font-weight: 400; margin: 0 auto 10px; }
-    li, .li { font-size: 18px; font-weight: 400; margin: 0 auto 10px; }
-    aside, .aside { font-size: 16px; font-weight: 300; margin: 0; }
-    .aside ~ .aside { margin: 10px 0 0; }
+    html { font-size: 16px; }
 }
 
 /* Sizes */
@@ -112,4 +103,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 > span, h2 > span, h3 > span, h4 > span, h5 > span, h6 > span {
     display: block;
+}
+
+/* Columns */
+.container {
+    max-width: 860px;
+    padding: 0px 0px;
+    margin: 0px auto;
+}
+@media screen and (min-width: 768px) {
+    .col-md-3 { float: left; width: 25%; padding: 0 10px; }
+    .col-md-6 { float: left; width: 50%; padding: 0 10px; }
+    .col-md-9 { float: left; width: 75%; padding: 0 10px; }
+    .col-md-12 { float: left; width: 100%; padding: 0 10px; }
 }
